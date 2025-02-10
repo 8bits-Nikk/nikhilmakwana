@@ -1,5 +1,5 @@
 # Nikhil Makwana
-nikhilmakwana.in
+https://nikhilmakwana.in
 
 
 Thanks to https://github.com/shahsagarm/sagarshah.dev
