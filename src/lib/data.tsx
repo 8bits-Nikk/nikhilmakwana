@@ -184,8 +184,8 @@ export const TECHNOLOGIES: TechDetails[] = [
 export const EXPERIENCES: ExperienceDetails[] = [
   {
     logo: LogoUpwork,
-    logoAlt: "Upwork logo",
-    position: "Independent Freelancer",
+    logoAlt: "Tatvasoft logo",
+    position: "Software Engineer",
     startDate: new Date(2021, 10),
     currentlyWorkHere: true,
     summary: [
@@ -196,8 +196,8 @@ export const EXPERIENCES: ExperienceDetails[] = [
   {
     logo: LogoGreenApex,
     darkModeLogo: LogoGreenApexLight,
-    logoAlt: "Greenapex logo",
-    position: "Team Lead",
+    logoAlt: "Tatvasoft logo",
+    position: "Trainee Software Engineer",
     startDate: new Date(2017, 6),
     endDate: new Date(2021, 9),
     summary: [
@@ -208,95 +208,79 @@ export const EXPERIENCES: ExperienceDetails[] = [
       "Handled sprint planning & task distribution.",
     ],
   },
-  {
-    logo: LogoDotnpixel,
-    darkModeLogo: LogoDotnpixelLight,
-    logoAlt: "Dotnpixel logo",
-    position: "Full Stack Developer",
-    startDate: new Date(2015, 11),
-    endDate: new Date(2017, 4),
-    summary: ["Worked as a full stack developer (React / Laravel)."],
-  },
 ];
 
 export const PROJECTS: ProjectDetails[] = [
   {
-    name: "Wingie",
+    name: "SAN",
     description:
       "A platform for comparing and finding affordable flights, as well as booking and purchasing tickets safely and easily in a few simple clicks.",
-    url: "https://www.wingie.com",
+    url: "https://sanglobalfashion.com/",
     previewImage: ProjectWingie,
     technologies: [
-      "React",
+      "React Native",
       "Typescript",
-      "React Bootstrap",
-      "Firebase",
-      "Express.js",
-      "PostgreSQL",
+      "Reactive Programming",
       "Styled Components",
-      "Redux",
+      "Context",
+      "PDF generation",
+      "Unlisted app distribution"
     ],
   },
   {
-    name: "Fiskil",
+    name: "Prana AI",
     description:
       "A platform for accessing real-time open banking and energy data to help you grow your business, backed with scalable back-end infrastructure.",
-    url: "https://fiskil.com.au",
+    url: "https://prana-ai.com/",
     previewImage: ProjectFiskil,
     technologies: [
-      "React",
-      "Next.js",
+      "React Native",
       "Typescript",
-      "Tailwindcss",
-      "Material UI",
-      "Redux Toolkit",
-      "React Query",
-      "Express.js",
-      "PostgreSQL",
-      "Firebase",
-      "AWS Amplify",
-      "Cypress",
-      "Storybook",
+      "Reactive Programming",
+      "Styled Components",
+      "Google Fit",
+      "Apple health",
+      "Zoom Meed SDK",
+      "In App Notifications"
     ],
   },
   {
-    name: "Pepehousing",
+    name: "Diawi",
     description:
       "A platform for renting a flat or room in Poland. You may browse hundreds of verified deals, contact the vendor, and pay online in a simple and secure manner.",
-    url: "https://pepehousing.com",
+    url: "",
     previewImage: ProjectPepehousing,
     technologies: [
-      "React",
-      "Next.js",
+      "React Native",
       "Typescript",
-      "Tailwindcss",
-      "Redux Toolkit",
-      "React Query",
-      "Storybook",
+      "Redux",
+      "Redux Saga",
+      "Zoom Video SDK",
+      "Jest"
     ],
   },
 ];
 
 export const TESTIMONIALS: TestimonialDetails[] = [
   {
-    personName: "Krisztian Gyuris",
+    personName: "Gunjan Bhavsar",
     personAvatar: AvatarKrisztian,
-    title: "Founder - inboxgenie.io",
+    title: "Team Lead At Tatvasoft",
     testimonial:
-      "Job well done! I am really impressed. He is very very good at what he does:) I would recommend Sagar and will rehire in the future for Frontend development.",
+      "Nikhil is a highly skilled and innovative developer, mastering modern web and mobile technologies while constantly pushing boundaries. His indie hacker mindset and ability to turn ideas into reality make you a true asset to any team!",
   },
   {
-    personName: "Eugen Esanu",
-    personAvatar: AvatarEugen,
-    title: "Founder - shosho.design",
-    testimonial:
-      "Great guy, highly recommended for any COMPLEX front-end development job! His skills are top-notch and he will be an amazing addition to any team.",
-  },
-  {
-    personName: "Joe Matkin",
+    personName: "Sagar Gupta",
     personAvatar: AvatarDummy,
-    title: "Freelancer",
+    title: "Project Manager - Builder.ai",
     testimonial:
-      "Sagar was extremely easy and pleasant to work with and he truly cares about the project being a success. Sagar has a high level of knowledge and was able to work on my MERN stack application without any issues.",
+      "Great guy, highly recommended for any COMPLEX front-end mobile development job! His skills are top-notch asl manage to help backend team and he will be an amazing addition to any team.",
+  },
+  {
+    personName: "Amit Gupta",
+    personAvatar: AvatarDummy,
+    title: "Project Manager - Builder.ai",
+    testimonial:
+      "Nikhil was extremely easy and pleasant to work with and he truly cares about the project being a success. Nikhil has a high level of knowledge and was able to work on my fashion application with pdfs without any issues.",
   },
 ];

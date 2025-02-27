@@ -31,7 +31,7 @@ const HeroSection = () => {
               <span className="inline-block animate-waving-hand">👋</span>
             </Typography>
             <Typography>
-              I&apos;m a Mobile Full-Stack Mobile Developer (React Native, Java Spring & Node.js)
+              I&apos;m a Full-Stack Mobile Developer (React Native, Java Spring & Node.js)
               with a focus on building (and occasionally designing) exceptional
               digital experiences that are fast, accessible, visually appealing,
               and responsive. Even after 3 years of developing mobile

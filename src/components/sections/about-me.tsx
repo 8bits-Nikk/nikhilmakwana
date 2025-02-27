@@ -34,28 +34,20 @@ const AboutMeSection = () => {
             Curious about me? Here you have it:
           </Typography>
           <Typography>
-            I&apos;m a passionate,{' '}
-            <Link
-              noCustomization
-              externalLink
-              withUnderline
-              href={EXTERNAL_LINKS.FIGMA}
-            >
-              self-proclaimed designer
-            </Link>{' '}
-            who specializes in full stack development (React.js & Node.js). I am
+            I&apos;m a passionate,
+            who specializes in full stack mobile development (React Native, Java Spring & Node.js). I am
             enthusiastic about bringing the technical and visual aspects of
             digital products to life. User experience, pixel perfect design, and
             writing clear, readable, highly performant code matters to me.
           </Typography>
           <Typography>
-            I began my journey as a web developer in 2015, and since then,
+            I began my journey as a android mobile developer in 2022, and since then,
             I&apos;ve continued to grow and evolve as a developer, taking on new
             challenges and learning the latest technologies along the way. Now,
-            in my early thirties, 7 years after starting my web development
-            journey, I&apos;m building cutting-edge web applications using
-            modern technologies such as Next.js, TypeScript, Nestjs,
-            Tailwindcss, Supabase and much more.
+            in my mid-twenties, 3 years after starting my mobile development
+            journey, I&apos;m building cutting-edge mobile applications using
+            modern technologies such as React Native,new architecture in react native, TypeScript,
+            NativeBase ,Firebase, Supabase and much more.
           </Typography>
           <Typography>
             I am very much a progressive thinker and enjoy working on products
@@ -63,7 +55,7 @@ const AboutMeSection = () => {
           </Typography>
           <Typography>
             When I&apos;m not in full-on developer mode, you can find me
-            hovering around on twitter or on indie hacker, witnessing the
+            hovering around on twitter or linkedin, witnessing the
             journey of early startups or enjoying some free time. You can follow
             me on{' '}
             <Link
@@ -92,11 +84,11 @@ const AboutMeSection = () => {
               <Typography component="li">
                 B.E. in Computer Engineering
               </Typography>
-              <Typography component="li">Full time freelancer</Typography>
+              <Typography component="li">Software Engineer At Tatvasoft</Typography>
             </ul>
             <ul className="flex list-inside list-disc flex-col gap-2">
               <Typography component="li">Avid learner</Typography>
-              <Typography component="li">Aspiring indie hacker</Typography>
+              <Typography component="li">Aspiring App builder</Typography>
             </ul>
           </div>
           <Typography>
