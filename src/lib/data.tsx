@@ -20,18 +20,10 @@ import LogoFigma from "/public/images/logos/icon-figma.svg";
 import LogoGit from "/public/images/logos/icon-git.svg";
 
 // Company Logos
-import LogoUpwork from "/public/images/logos/logo-upwork.svg";
-import LogoGreenApex from "/public/images/logos/logo-greenapex.svg";
-import LogoGreenApexLight from "/public/images/logos/logo-greenapex-light.svg";
-import LogoDotnpixel from "/public/images/logos/logo-dotnpixel.svg";
-import LogoDotnpixelLight from "/public/images/logos/logo-dotnpixel-light.svg";
+import LogoCephei from "/public/images/logos/cephei-logo.png";
+import LogoTatva from "/public/images/logos/tatva-logo.svg";
+import LogoTatvaLight from "/public/images/logos/tatva-logo-light.png";
 
-import ProjectFiskil from "/public/images/project-fiskil.png";
-import ProjectWingie from "/public/images/project-wingie.png";
-import ProjectPepehousing from "/public/images/project-pepehousing.png";
-
-import AvatarKrisztian from "/public/images/avatar-krisztian.png";
-import AvatarEugen from "/public/images/avatar-eugen.png";
 import AvatarDummy from "/public/images/avatar-dummy.svg";
 
 import {
@@ -43,11 +35,7 @@ import {
 
 export const EXTERNAL_LINKS = {
   GITHUB: "https://github.com/8bits-Nikk",
-  GITHUB_REPO: "https://github.com/shahsagarm/sagarshah.dev",
   TWITTER: "https://x.com/_nikhil_makwana?s=21",
-  FIGMA: "https://www.figma.com/@shahsagarm",
-  FIGMA_FILE:
-    "https://www.figma.com/community/file/1262992249991763120/Personal-Portfolio-Website-Template-%7C-Mobile-%26-Desktop",
 };
 
 export const NAV_LINKS = [
@@ -183,25 +171,42 @@ export const TECHNOLOGIES: TechDetails[] = [
 
 export const EXPERIENCES: ExperienceDetails[] = [
   {
-    logo: "",
+    logo: LogoCephei,
+    logoAlt: "Cepheiinfotech logo",
+    position: "Senior Software Engineer",
+    startDate: new Date(2025, 8),
+    currentlyWorkHere: true,
+    summary: [
+      "Developing Reliable and Scalable B2B mobile application.",
+      "Worked with React Native, Typescript, Nest JS, PostgreSQL, Microservices, Kafka and others.",
+    ],
+  },
+  {
+    logo: LogoTatvaLight,
     logoAlt: "Tatvasoft logo",
     position: "Software Engineer",
     startDate: new Date(2021, 10),
-    currentlyWorkHere: true,
+    currentlyWorkHere: false,
     summary: [
-      "Worked for various clients like Fiskil, Shosho, Crowe MacKay LLP.",
-      "Worked with a variety of technologies, including React, Next.js, Typescript, Express.js, PostgreSQL, Tailwindcss, Mui, Firebase, Storybook, Cypress, and others.",
+      "Worked for various clients and projects, including mobile applications, web applications, and APIs.",
+      "Worked with a variety of technologies, including React Native, Typescript, Firebase, Java, PostgreSQL, Spring Boot and others.",
     ],
-  }
+  },
 ];
 
 export const PROJECTS: ProjectDetails[] = [
   {
-    name: "SAN",
+    name: "SAN Global Fashion – Internal Product Catalog App",
     description:
-      "A platform for comparing and finding affordable flights, as well as booking and purchasing tickets safely and easily in a few simple clicks.",
+      "Built a React Native mobile app for SAN Global Fashion to streamline internal product browsing and selection for company employees.",
     url: "https://sanglobalfashion.com/",
-    previewImage: ProjectWingie,
+    keyFeatures: [
+      "Category-based product filtering",
+      "Detailed product pages with images and specifications",
+      "Product selection and bookmarking functionality",
+      "Dynamic PDF catalog generation based on selected products",
+      "Optimized for performance and usability across devices",
+    ],
     technologies: [
       "React Native",
       "Typescript",
@@ -209,39 +214,96 @@ export const PROJECTS: ProjectDetails[] = [
       "Styled Components",
       "Context",
       "PDF generation",
-      "Unlisted app distribution"
+      "Unlisted app distribution",
     ],
   },
   {
-    name: "Prana AI",
+    name: "Prana-AI – All-in-One AI Health Manager",
     description:
-      "A platform for accessing real-time open banking and energy data to help you grow your business, backed with scalable back-end infrastructure.",
-    url: "https://prana-ai.com/",
-    previewImage: ProjectFiskil,
+      "Developed a comprehensive AI-powered health management app using React Native, integrating Google Fit and Apple Health to provide real-time health tracking, personalized workout and diet plans, and live video consultations.",
+    url: "https://play.google.com/store/apps/details?id=com.prana.ai.app&hl=en_IN",
+    keyFeatures: [
+      "Google Fit / Apple HealthKit integration for activity and health data",
+      "AI Workout Assistant with personalized fitness guidance",
+      "Diet Planner tailored to user goals and preferences",
+      "Goal tracking and achievement rewards",
+      "Video calls with experts via Zoom Meeting SDK (native module integration)",
+    ],
     technologies: [
       "React Native",
       "Typescript",
       "Reactive Programming",
-      "Styled Components",
+      "FCM",
       "Google Fit",
       "Apple health",
       "Zoom Meed SDK",
-      "In App Notifications"
+      "In App Notifications",
     ],
   },
   {
-    name: "Diawi",
+    name: "Banking Loan App – UAE Loan Management Platform",
     description:
-      "A platform for renting a flat or room in Poland. You may browse hundreds of verified deals, contact the vendor, and pay online in a simple and secure manner.",
-    url: "",
-    previewImage: ProjectPepehousing,
+      "Worked on a secure, mobile banking application (project under NDA) for managing personal loans in the UAE, with integration of UAE PASS Digital Vault APIs for verified user identity and data access.",
+    keyFeatures: [
+      "Fetch user details securely using UAE PASS Digital Vault",
+      "Manage loan details, payment schedules, and transaction history",
+      "View outstanding balances, due dates, and loan summaries",
+      "Seamless and secure login with identity verification",
+      "User-friendly interface with real-time updates",
+      "Microsoft Dynamics CRM module for help and quick support",
+    ],
     technologies: [
       "React Native",
       "Typescript",
-      "Redux",
-      "Redux Saga",
+      "Context",
+      "UAE PASS APIs",
+      "RESTful APIs",
+      "Axios",
+      "MMKV",
+      "FCM",
+    ],
+  },
+  {
+    name: "Healthcare App (UAE-based)",
+    description: "A comprehensive health management platform",
+    keyFeatures: [
+      "Book medical appointments with doctors and specialists",
+      "Link and manage family members under a single account",
+      "Fetch health records using UAE national ID",
+      "Conduct teleconsultations via Zoom Video SDK",
+      "Handle payments for consultations and services",
+    ],
+    technologies: [
+      "React Native",
       "Zoom Video SDK",
-      "Jest"
+      "REST API",
+      "Firebase",
+      "Local UAE gateway",
+      "Secure Auth",
+      "Deep Linking",
+    ],
+  },
+  {
+    name: "PIMS.AI – Performance Intelligence & Monitoring System",
+    description:
+      "Developed a monolithic Java Spring Boot REST API application for PIMS.AI, designed to collect, process, and analyze operational data from oil, grease, and petroleum companies.",
+    keyFeatures: [
+      "REST APIs to collect and store field and production data",
+      "Data processing and performance analytics engine",
+      "Auto-generated yearly performance reports with insights",
+      "Recommendation engine to provide improvement suggestions for the upcoming year",
+      "API-based integration with external data sources and internal dashboards",
+    ],
+    technologies: [
+      "Java",
+      "Spring Boot",
+      "Spring MVC",
+      "Spring Data JPA",
+      "JDBC Template",
+      "REST APIs",
+      "MSSQL",
+      "MapStruct",
+      "Lombok",
     ],
   },
 ];
@@ -249,23 +311,9 @@ export const PROJECTS: ProjectDetails[] = [
 export const TESTIMONIALS: TestimonialDetails[] = [
   {
     personName: "Gunjan Bhavsar",
-    personAvatar: AvatarKrisztian,
+    personAvatar: AvatarDummy,
     title: "Team Lead At Tatvasoft",
     testimonial:
-      "Nikhil is a highly skilled and innovative developer, mastering modern web and mobile technologies while constantly pushing boundaries. His indie hacker mindset and ability to turn ideas into reality make you a true asset to any team!",
-  },
-  {
-    personName: "Sagar Gupta",
-    personAvatar: AvatarDummy,
-    title: "Project Manager - Builder.ai",
-    testimonial:
-      "Great guy, highly recommended for any COMPLEX front-end mobile development job! His skills are top-notch asl manage to help backend team and he will be an amazing addition to any team.",
-  },
-  {
-    personName: "Amit Gupta",
-    personAvatar: AvatarDummy,
-    title: "Project Manager - Builder.ai",
-    testimonial:
-      "Nikhil was extremely easy and pleasant to work with and he truly cares about the project being a success. Nikhil has a high level of knowledge and was able to work on my fashion application with pdfs without any issues.",
+      "Nikhil is a hard working person, he is always eager to learn new things and is a good team player. He has a good sense of humour and is a great problem solver.",
   },
 ];

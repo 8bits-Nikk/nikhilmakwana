@@ -13,7 +13,7 @@ import useWindowSize from '@/hooks/use-window-size';
 import { copyTextToClipboard } from '@/lib/utils';
 
 let email = 'makwananikhil1448@gmail.com';
-let phone = '+91 8401867397';
+let phone = '+91 123';
 
 type CopyValue = 'email' | 'phone';
 
@@ -69,11 +69,9 @@ const ContactSection = () => {
               <Copy />
             </IconButton>
           </div>
-          <div className="flex items-center gap-4 md:gap-5">
+          {/* <div className="flex items-center gap-4 md:gap-5">
             <Phone className="h-6 w-6 md:h-8 md:w-8" />
-            {/* <Link href={`tel:${phone.replace(' ', '')}`}> */}
-            <Typography variant="h2">{phone}</Typography>
-            {/* </Link> */}
+            <Typography variant="h2">{phone}</Typography>    
             <IconButton
               size={width && width < 768 ? 'md' : 'lg'}
               onClick={() => handleCopyClick(phone.replace(' ', ''), 'phone')}
@@ -82,7 +80,7 @@ const ContactSection = () => {
             >
               <Copy />
             </IconButton>
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col items-center gap-2">
           <Typography className="text-center">
