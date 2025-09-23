@@ -174,7 +174,7 @@ export const EXPERIENCES: ExperienceDetails[] = [
     logo: LogoCephei,
     logoAlt: "Cepheiinfotech logo",
     position: "Senior Software Engineer",
-    startDate: new Date(2025, 8),
+    startDate: new Date(2025, 7),
     currentlyWorkHere: true,
     summary: [
       "Developing Reliable and Scalable B2B mobile application.",
@@ -186,6 +186,7 @@ export const EXPERIENCES: ExperienceDetails[] = [
     logoAlt: "Tatvasoft logo",
     position: "Software Engineer",
     startDate: new Date(2021, 10),
+    endDate: new Date(2025, 7),
     currentlyWorkHere: false,
     summary: [
       "Worked for various clients and projects, including mobile applications, web applications, and APIs.",

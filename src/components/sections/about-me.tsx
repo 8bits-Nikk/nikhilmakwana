@@ -84,7 +84,7 @@ const AboutMeSection = () => {
               <Typography component="li">
                 B.E. in Computer Engineering
               </Typography>
-              <Typography component="li">Software Engineer At Tatvasoft</Typography>
+              <Typography component="li">Sr. Software Engineer At Cepheiinfotech</Typography>
             </ul>
             <ul className="flex list-inside list-disc flex-col gap-2">
               <Typography component="li">Avid learner</Typography>
