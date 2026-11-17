@@ -6,10 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio site for nikhilmakwana.in — a single-page React + Vite app
 (TypeScript, Tailwind CSS v4), built to static files and served by nginx in
-Docker. Migrated from a Next.js 13 App Router version, now only on GitHub
-(`8bits-Nikk/nikhilmakwana`; the local copy was removed 2026-11-15, source
-backup in `~/backups/documents-removed-2026-11-15/`). It is the historical
-reference, not a dependency.
+Docker. Migrated from a Next.js 13 App Router version. This directory is the
+git repo `8bits-Nikk/nikhilmakwana` (branch `master`, pushed over HTTPS with
+the gh credential helper); the old Next.js code is the history before commit
+53b711e (2026-11-17), plus a source backup in
+`~/backups/documents-removed-2026-11-15/`. It is the historical reference, not
+a dependency.
 
 ## Commands
 
