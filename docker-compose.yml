@@ -1,0 +1,20 @@
+services:
+  web:
+    image: portfolio:2.5
+    build: .
+    ports:
+      - '9000:80'
+    depends_on:
+      - api
+    restart: always
+
+  api:
+    image: portfolio-api:1.2
+    build: ./server
+    # SMTP credentials — copy server/.env.example to server/.env first.
+    env_file:
+      - ./server/.env
+    # Not published to the host: only nginx reaches it, over the compose network.
+    expose:
+      - '3000'
+    restart: always

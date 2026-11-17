@@ -1,34 +1,29 @@
-'use client';
+import type { ImgHTMLAttributes } from 'react'
 
-import { useEffect, useState } from 'react';
-import Image, { ImageProps, StaticImageData } from 'next/image';
-import { useTheme } from 'next-themes';
+import useTheme from '@/hooks/use-theme'
 
-type ImageWrapperProps = ImageProps & {
-  srcForDarkMode?: string | StaticImageData;
-};
+type ImageWrapperProps = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'> & {
+  src: string
+  /** Swapped in when the dark theme is active — for logos that need contrast. */
+  srcForDarkMode?: string
+  alt: string
+}
 
 const ImageWrapper = ({
-  srcForDarkMode,
   src,
+  srcForDarkMode,
   alt,
+  loading = 'lazy',
+  decoding = 'async',
   ...props
 }: ImageWrapperProps) => {
-  // Ref :: https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
-  const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme()
+  const finalSrc =
+    resolvedTheme === 'dark' && srcForDarkMode ? srcForDarkMode : src
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  return (
+    <img src={finalSrc} alt={alt} loading={loading} decoding={decoding} {...props} />
+  )
+}
 
-  if (!mounted) {
-    return null;
-  }
-
-  const finalSrc = theme === 'dark' ? srcForDarkMode || src : src;
-
-  return <Image src={finalSrc!} alt={alt} {...props} />;
-};
-
-export default ImageWrapper;
+export default ImageWrapper

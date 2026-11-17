@@ -1,28 +1,21 @@
-#Stage 1:
-# Use the official Node.js image as the base image
-FROM node:18-alpine AS buildStage
-# Set the working directory inside the container
+# Stage 1 — build the static bundle
+FROM node:22-alpine AS build
+
 WORKDIR /app
-# Copy package.json and package-lock.json first (for caching dependencies)
+
+# Copy the manifests first so dependency installs stay cached between builds.
 COPY package.json package-lock.json ./
-# Install dependencies
-RUN npm install --production
-# Copy the entire Next.js project to the container
+RUN npm ci
+
 COPY . .
-# Build the Next.js app
 RUN npm run build
 
-#Stage 2:
-# Use minimal nginx image
+# Stage 2 — serve it with nginx
 FROM nginx:alpine
-# Copy all th static site data
-COPY --from=buildStage /app/out /usr/share/nginx/html
 
-#Use default config
-#COPY nginx.conf /etc/nginx/conf.d/default.conf
- 
-# Expose default 80 port bind with desire port
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Start nginx server 
 CMD ["nginx", "-g", "daemon off;"]

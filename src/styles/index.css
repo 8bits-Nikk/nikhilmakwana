@@ -1,0 +1,261 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+/* Dark mode is driven by a `.dark` class on <html> (see theme-provider.tsx). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Colour system
+ * -------------
+ * The `gray` scale is INVERTED in dark mode: `gray-900` is near-black on light
+ * and near-white on dark, so a single `text-gray-900` reads correctly in both
+ * themes. Surfaces get their own semantic tokens (canvas / surface / muted /
+ * border) so backgrounds never have to be reasoned about "upside down".
+ */
+:root {
+  --app-gray-50: 249 250 251;
+  --app-gray-100: 243 244 246;
+  --app-gray-200: 229 231 235;
+  --app-gray-300: 209 213 219;
+  --app-gray-400: 156 163 175;
+  --app-gray-500: 107 114 128;
+  --app-gray-600: 75 85 99;
+  --app-gray-700: 55 65 81;
+  --app-gray-800: 31 41 55;
+  --app-gray-900: 17 24 39;
+  --app-gray-950: 3 7 18;
+
+  --app-canvas: 255 255 255;
+  --app-surface: 255 255 255;
+  --app-muted: 249 250 251;
+  --app-border: 229 231 235;
+
+  --app-brand: 79 70 229;
+  --app-brand-strong: 67 56 202;
+  --app-brand-soft: 238 242 255;
+  --app-accent: 147 51 234;
+}
+
+.dark {
+  --app-gray-50: 17 24 39;
+  --app-gray-100: 31 41 55;
+  --app-gray-200: 55 65 81;
+  --app-gray-300: 75 85 99;
+  --app-gray-400: 107 114 128;
+  --app-gray-500: 156 163 175;
+  --app-gray-600: 209 213 219;
+  --app-gray-700: 229 231 235;
+  --app-gray-800: 243 244 246;
+  --app-gray-900: 249 250 251;
+  --app-gray-950: 255 255 255;
+
+  --app-canvas: 3 7 18;
+  --app-surface: 15 20 33;
+  --app-muted: 9 13 24;
+  --app-border: 38 47 66;
+
+  --app-brand: 129 140 248;
+  --app-brand-strong: 165 180 252;
+  --app-brand-soft: 27 30 58;
+  --app-accent: 192 132 252;
+}
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+
+  --color-gray-50: rgb(var(--app-gray-50));
+  --color-gray-100: rgb(var(--app-gray-100));
+  --color-gray-200: rgb(var(--app-gray-200));
+  --color-gray-300: rgb(var(--app-gray-300));
+  --color-gray-400: rgb(var(--app-gray-400));
+  --color-gray-500: rgb(var(--app-gray-500));
+  --color-gray-600: rgb(var(--app-gray-600));
+  --color-gray-700: rgb(var(--app-gray-700));
+  --color-gray-800: rgb(var(--app-gray-800));
+  --color-gray-900: rgb(var(--app-gray-900));
+  --color-gray-950: rgb(var(--app-gray-950));
+
+  --color-canvas: rgb(var(--app-canvas));
+  --color-surface: rgb(var(--app-surface));
+  --color-muted: rgb(var(--app-muted));
+  --color-line: rgb(var(--app-border));
+
+  --color-brand: rgb(var(--app-brand));
+  --color-brand-strong: rgb(var(--app-brand-strong));
+  --color-brand-soft: rgb(var(--app-brand-soft));
+  --color-accent: rgb(var(--app-accent));
+
+  --shadow-card: 0 1px 2px rgb(var(--app-gray-950) / 0.04),
+    0 8px 24px -12px rgb(var(--app-gray-950) / 0.12);
+  --shadow-card-hover: 0 1px 2px rgb(var(--app-gray-950) / 0.05),
+    0 20px 48px -20px rgb(var(--app-gray-950) / 0.22);
+
+  --animate-waving-hand: waving 2s linear 3;
+  --animate-drawer-in: drawer-in 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-drawer-out: drawer-out 0.2s ease-in;
+  --animate-fade-in: fade-in 0.25s ease-out;
+  --animate-fade-out: fade-out 0.2s ease-in;
+  --animate-float: float 14s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes waving {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60%,
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes drawer-in {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes drawer-out {
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(0, -24px, 0) scale(1.06);
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-gray-600);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgb(var(--app-brand) / 0.22);
+    color: var(--color-gray-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 0.35rem;
+  }
+
+  /* Offset anchor jumps so the sticky header never covers a section heading. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-muted);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--app-gray-400) / 0.6);
+    border-radius: 9999px;
+    border: 2px solid var(--color-muted);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--app-gray-500) / 0.8);
+  }
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand) 0%,
+    var(--color-accent) 55%,
+    var(--color-brand-strong) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+/* Faint dot grid used behind the hero. */
+@utility bg-dot-grid {
+  background-image: radial-gradient(
+    rgb(var(--app-gray-400) / 0.35) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Gradient hairline used to separate sections. */
+@utility divider-glow {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(var(--app-border)) 20%,
+    rgb(var(--app-brand) / 0.45) 50%,
+    rgb(var(--app-border)) 80%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

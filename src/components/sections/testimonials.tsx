@@ -1,28 +1,29 @@
-import { TESTIMONIALS } from '@/lib/data';
-import Tag from '@/components/data-display/tag';
-import TestimonialDetails from '@/components/data-display/testimonial-details';
-import Typography from '@/components/general/typography';
-import Container from '@/components/layout/container';
+import TestimonialCard from '@/components/data-display/testimonial-card'
+import Reveal from '@/components/general/reveal'
+import Container from '@/components/layout/container'
+import SectionHeading from '@/components/layout/section-heading'
+import { TESTIMONIALS } from '@/lib/data'
 
-const TestimonialsSection = () => {
-  return (
-    <Container id="testimonials" className="bg-gray-50">
-      <div className="flex flex-col items-center gap-4">
-        <div className="self-center">
-          <Tag label="Testimonials" />
-        </div>
-        <Typography variant="subtitle" className="max-w-xl text-center">
-          Nice things people have said about me:
-        </Typography>
-      </div>
+const TestimonialsSection = () => (
+  <Container id="testimonials" tone="muted">
+    <SectionHeading
+      eyebrow="Testimonials"
+      title="What colleagues say"
+      description="Feedback from the people I have worked alongside."
+    />
 
-      <div className="flex gap-12 max-md:flex-col md:max-lg:flex-wrap">
-        {TESTIMONIALS?.map((testimonial, index) => (
-          <TestimonialDetails key={index} {...testimonial} />
-        ))}
-      </div>
-    </Container>
-  );
-};
+    <div className="flex flex-wrap justify-center gap-8">
+      {TESTIMONIALS.map((testimonial, index) => (
+        <Reveal
+          key={testimonial.personName}
+          delay={index * 80}
+          className="flex w-full max-w-xl"
+        >
+          <TestimonialCard {...testimonial} />
+        </Reveal>
+      ))}
+    </div>
+  </Container>
+)
 
-export default TestimonialsSection;
+export default TestimonialsSection

@@ -1,4 +1,12 @@
+node_modules
+dist
+# The API is a separate image with its own build context.
+server
 .git
 .gitignore
-.next
-out
+*.log
+.DS_Store
+.vscode
+.idea
+README.md
+CLAUDE.md

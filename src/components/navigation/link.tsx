@@ -1,48 +1,38 @@
-import * as React from 'react';
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+import type { AnchorHTMLAttributes, Ref } from 'react'
 
-import { mergeClasses } from '@/lib/utils';
+import { mergeClasses } from '@/lib/utils'
 
-interface LinkProps extends NextLinkProps {
-  className?: string;
-  children?: React.ReactNode;
-  noCustomization?: boolean;
-  externalLink?: boolean;
-  withUnderline?: boolean;
+type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  /** Opens in a new tab with the matching `rel` guard. */
+  externalLink?: boolean
+  withUnderline?: boolean
+  /** Skips the default link styling — for links that wrap their own visuals. */
+  noCustomization?: boolean
+  ref?: Ref<HTMLAnchorElement>
 }
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  (
-    {
-      noCustomization,
-      children = null,
-      className = '',
-      externalLink = false,
-      withUnderline = false,
-      ...props
-    }: LinkProps,
-    ref
-  ) => {
-    return (
-      <NextLink
-        {...props}
-        target={externalLink ? '_blank' : '_self'}
-        ref={ref}
-        className={mergeClasses(
-          noCustomization ??
-            'text-base font-medium text-gray-600 transition-all hover:text-gray-900 active:text-gray-600',
-          withUnderline
-            ? 'underline underline-offset-4 transition-all hover:text-gray-900 active:text-gray-600'
-            : '',
-          className
-        )}
-      >
-        {children}
-      </NextLink>
-    );
-  }
-);
+const Link = ({
+  className,
+  children,
+  externalLink = false,
+  withUnderline = false,
+  noCustomization = false,
+  ...props
+}: LinkProps) => (
+  <a
+    {...props}
+    target={externalLink ? '_blank' : undefined}
+    rel={externalLink ? 'noreferrer' : undefined}
+    className={mergeClasses(
+      !noCustomization &&
+        'rounded-sm text-base font-medium text-gray-600 transition-colors hover:text-gray-900',
+      withUnderline &&
+        'font-medium text-brand underline decoration-brand/40 decoration-2 underline-offset-4 transition-colors hover:decoration-brand',
+      className,
+    )}
+  >
+    {children}
+  </a>
+)
 
-Link.displayName = 'Link';
-
-export default Link;
+export default Link

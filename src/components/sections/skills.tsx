@@ -1,28 +1,50 @@
-import { TECHNOLOGIES } from '@/lib/data';
-import Tag from '@/components/data-display/tag';
-import TechDetails from '@/components/data-display/tech-details';
-import Typography from '@/components/general/typography';
-import Container from '@/components/layout/container';
+import TechCard from '@/components/data-display/tech-card'
+import Reveal from '@/components/general/reveal'
+import Typography from '@/components/general/typography'
+import Container from '@/components/layout/container'
+import SectionHeading from '@/components/layout/section-heading'
+import { TECHNOLOGIES, TECH_CATEGORIES } from '@/lib/data'
 
-const SkillsSection = () => {
-  return (
-    <Container id='skills'>
-      <div className="flex flex-col items-center gap-4">
-        <div className="self-center">
-          <Tag label="Skills" />
-        </div>
-        <Typography variant="subtitle" className="max-w-xl text-center">
-          The skills, tools and technologies I am really good at:
-        </Typography>
-      </div>
+const SkillsSection = () => (
+  <Container id="skills">
+    <SectionHeading
+      eyebrow="Skills"
+      title="Skills and technologies"
+      description="The tools and technologies I work with day to day, grouped by where they sit in the stack."
+    />
 
-      <div className="grid grid-cols-3 gap-y-4 md:grid-cols-6 md:gap-y-8 lg:grid-cols-8 lg:gap-y-12">
-        {TECHNOLOGIES.map((technology, index) => (
-          <TechDetails {...technology} key={index} />
-        ))}
-      </div>
-    </Container>
-  );
-};
+    <div className="flex flex-col gap-10">
+      {TECH_CATEGORIES.map((category, categoryIndex) => {
+        const technologies = TECHNOLOGIES.filter(
+          (technology) => technology.category === category,
+        )
 
-export default SkillsSection;
+        if (technologies.length === 0) return null
+
+        return (
+          <Reveal
+            key={category}
+            delay={categoryIndex * 60}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex items-center gap-4">
+              <Typography variant="overline">{category}</Typography>
+              <span className="h-px flex-1 bg-line" aria-hidden />
+              <Typography variant="body3" className="text-gray-400">
+                {technologies.length}
+              </Typography>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {technologies.map((technology) => (
+                <TechCard key={technology.label} {...technology} />
+              ))}
+            </div>
+          </Reveal>
+        )
+      })}
+    </div>
+  </Container>
+)
+
+export default SkillsSection

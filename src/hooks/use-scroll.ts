@@ -1,16 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
+/** True once the page has scrolled past `threshold` pixels. */
 export default function useScroll(threshold: number) {
-  const [scrolled, setScrolled] = useState(false);
-
-  const onScroll = useCallback(() => {
-    setScrolled((window.scrollY || window.pageYOffset) > threshold);
-  }, [threshold]);
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [onScroll]);
+    const onScroll = () => setScrolled(window.scrollY > threshold)
 
-  return scrolled;
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [threshold])
+
+  return scrolled
 }

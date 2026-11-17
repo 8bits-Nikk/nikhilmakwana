@@ -1,30 +1,25 @@
-import { PROJECTS } from '@/lib/data';
-import ProjectDetails from '@/components/data-display/project-details';
-import Tag from '@/components/data-display/tag';
-import Typography from '@/components/general/typography';
-import Container from '@/components/layout/container';
+import ProjectCard from '@/components/data-display/project-card'
+import Reveal from '@/components/general/reveal'
+import Container from '@/components/layout/container'
+import SectionHeading from '@/components/layout/section-heading'
+import { PROJECTS } from '@/lib/data'
 
-const WorkSection = () => {
-  return (
-    <Container id="work">
-      <div className="flex flex-col items-center gap-4">
-        <div className="self-center">
-          <Tag label="Work" />
-        </div>
-        <Typography variant="subtitle" className="max-w-xl text-center">
-          Some of the noteworthy projects I have built:
-        </Typography>
-      </div>
+const WorkSection = () => (
+  <Container id="work">
+    <SectionHeading
+      eyebrow="Work"
+      title="Selected projects"
+      description="Client work spanning fintech, healthcare, retail and industrial analytics — primarily mobile applications, and the APIs behind them."
+    />
 
-      {PROJECTS?.map((project, index) => (
-        <ProjectDetails
-          key={index}
-          {...project}
-          layoutType={index % 2 === 0 ? 'default' : 'reverse'}
-        />
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-8">
+      {PROJECTS.map((project, index) => (
+        <Reveal key={project.name} delay={(index % 2) * 80}>
+          <ProjectCard {...project} index={index} />
+        </Reveal>
       ))}
-    </Container>
-  );
-};
+    </div>
+  </Container>
+)
 
-export default WorkSection;
+export default WorkSection

@@ -1,19 +1,30 @@
-import { mergeClasses } from '@/lib/utils';
+import type { HTMLAttributes, Ref } from 'react'
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
+import { mergeClasses } from '@/lib/utils'
 
-const Card = ({ className, children, ...props }: CardProps) => {
-  return (
-    <div
-      className={mergeClasses(
-        'rounded-xl bg-gray shadow-md dark:bg-gray-100 dark:shadow-2xl',
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
+type CardProps = HTMLAttributes<HTMLDivElement> & {
+  /** Adds a lift + border glow on hover. Use for interactive cards. */
+  interactive?: boolean
+  ref?: Ref<HTMLDivElement>
+}
 
-export default Card;
+const Card = ({
+  className,
+  children,
+  interactive = false,
+  ...props
+}: CardProps) => (
+  <div
+    className={mergeClasses(
+      'rounded-2xl border border-line bg-surface shadow-card',
+      interactive &&
+        'transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card-hover',
+      className,
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+)
+
+export default Card

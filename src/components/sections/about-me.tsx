@@ -1,104 +1,123 @@
-import Image from 'next/image';
+import { GraduationCap, Lightbulb, Rocket, Smartphone } from 'lucide-react'
 
-import NikhilFullPose from '/public/images/nikhil-full-pose.jpg';
-import Tag from '@/components/data-display/tag';
-import Container from '@/components/layout/container';
-import Typography from '@/components/general/typography';
-import Link from '@/components/navigation/link';
-import { EXTERNAL_LINKS } from '@/lib/data';
+import NikhilFullPose from '@/assets/images/nikhil-full-pose.jpg'
+import Reveal from '@/components/general/reveal'
+import Typography from '@/components/general/typography'
+import Container from '@/components/layout/container'
+import SectionHeading from '@/components/layout/section-heading'
+import Link from '@/components/navigation/link'
+import { EXTERNAL_LINKS, PROFILE } from '@/lib/data'
 
-const AboutMeSection = () => {
-  return (
-    <Container className="bg-gray-50" id="about">
-      <div className="self-center">
-        <Tag label="About me" />
-      </div>
+const HIGHLIGHTS = [
+  { icon: GraduationCap, label: 'B.E. in Computer Engineering' },
+  { icon: Smartphone, label: 'Senior Software Engineer at Cephei Infotech' },
+  { icon: Lightbulb, label: 'Committed to continuous learning' },
+  { icon: Rocket, label: 'Product-minded, end-to-end ownership' },
+]
 
-      <div className="flex w-full flex-col justify-between gap-12 md:flex-row">
-        {/* Image */}
-        <div className="flex justify-center md:order-first md:justify-end">
-          <div className="relative h-[380px] w-[320px] md:h-[460px] md:w-[380px] lg:h-[520px] lg:w-[440px]">
-            <Image
+const AboutMeSection = () => (
+  <Container id="about" tone="muted">
+    <SectionHeading
+      eyebrow="About me"
+      title="A closer look at my background"
+      description="Where I started, what I build today and how I approach my work."
+    />
+
+    <div className="flex w-full flex-col items-start gap-12 lg:flex-row lg:gap-16">
+      {/* Portrait */}
+      <Reveal className="mx-auto w-full max-w-sm shrink-0 lg:mx-0 lg:w-2/5">
+        <div className="relative">
+          <div
+            className="absolute -bottom-5 -left-5 h-full w-full rounded-[1.75rem] border-2 border-brand/25"
+            aria-hidden
+          />
+          <div className="relative aspect-4/5 w-full overflow-hidden rounded-[1.75rem] border border-line bg-canvas shadow-card-hover">
+            <img
               src={NikhilFullPose}
-              alt="Fullpose of Nikhil"
-              className="absolute z-10 h-[360px] w-[280px] border-8 border-gray-50 max-md:left-5 md:right-0 md:top-0 md:h-[420px] md:w-[340px] lg:h-[480px] lg:w-[400px]"
-              style={{ objectFit: 'cover' }}
-            ></Image>
-            <div className="absolute h-[360px] w-[320px] border-8 border-transparent bg-gray-200 max-md:top-5 md:bottom-0 md:left-0 md:h-[420px] md:w-[340px] lg:h-[480px] lg:w-[400px]"></div>
+              alt={`${PROFILE.name} standing`}
+              loading="lazy"
+              decoding="async"
+              className="size-full object-cover"
+            />
           </div>
         </div>
+      </Reveal>
 
-        {/* Content */}
-        <div className="flex max-w-xl flex-col gap-6">
-          <Typography variant="h3">
-            Curious about me? Here you have it:
-          </Typography>
-          <Typography>
-            I&apos;m a passionate,
-            who specializes in full stack mobile development (React Native, Java Spring & Node.js). I am
-            enthusiastic about bringing the technical and visual aspects of
-            digital products to life. User experience, pixel perfect design, and
-            writing clear, readable, highly performant code matters to me.
-          </Typography>
-          <Typography>
-            I began my journey as a android mobile developer in 2022, and since then,
-            I&apos;ve continued to grow and evolve as a developer, taking on new
-            challenges and learning the latest technologies along the way. Now,
-            in my mid-twenties, 3 years after starting my mobile development
-            journey, I&apos;m building cutting-edge mobile applications using
-            modern technologies such as React Native,new architecture in react native, TypeScript,
-            NativeBase ,Firebase, Supabase and much more.
-          </Typography>
-          <Typography>
-            I am very much a progressive thinker and enjoy working on products
-            end to end, from ideation all the way to development.
-          </Typography>
-          <Typography>
-            When I&apos;m not in full-on developer mode, you can find me
-            hovering around on twitter or linkedin, witnessing the
-            journey of early startups or enjoying some free time. You can follow
-            me on{' '}
-            <Link
-              noCustomization
-              externalLink
-              withUnderline
-              href={EXTERNAL_LINKS.TWITTER}
+      {/* Content */}
+      <Reveal delay={100} className="flex flex-1 flex-col gap-5">
+        <Typography variant="body1" className="text-pretty">
+          I am a software engineer specializing in full-stack mobile
+          development with React Native, Java Spring Boot and Node.js. I care
+          equally about the technical and the visual side of a product: user
+          experience, faithful design implementation, and clear, maintainable,
+          high-performance code.
+        </Typography>
+
+        <Typography variant="body1" className="text-pretty">
+          I began my career as an Android developer and have since grown into
+          building cross-platform mobile products end to end. Today I work
+          primarily with React Native — including its new architecture —
+          alongside TypeScript, Firebase, PostgreSQL and Node.js, delivering
+          applications for clients in fintech, healthcare and retail.
+        </Typography>
+
+        <Typography variant="body1" className="text-pretty">
+          I enjoy contributing across the full product lifecycle, from early
+          ideation and technical design through to release and ongoing support,
+          and I work closely with designers, QA and stakeholders to get there.
+        </Typography>
+
+        <Typography variant="body1" className="text-pretty">
+          Outside of client work I follow the early-stage startup ecosystem and
+          keep an eye on where the mobile platform is heading. You can see my
+          code on{' '}
+          <Link
+            noCustomization
+            externalLink
+            withUnderline
+            href={EXTERNAL_LINKS.GITHUB}
+          >
+            GitHub
+          </Link>{' '}
+          or follow what I am building on{' '}
+          <Link
+            noCustomization
+            externalLink
+            withUnderline
+            href={EXTERNAL_LINKS.TWITTER}
+          >
+            X
+          </Link>
+          .
+        </Typography>
+
+        <Typography variant="body1" className="font-medium text-gray-900">
+          A few highlights:
+        </Typography>
+
+        <ul className="grid list-none gap-3 sm:grid-cols-2">
+          {HIGHLIGHTS.map(({ icon: Icon, label }) => (
+            <li
+              key={label}
+              className="flex items-center gap-3 rounded-2xl border border-line bg-canvas px-4 py-3"
             >
-              Twitter
-            </Link>{' '}
-            where I share tech-related bites and build in public, or you can
-            follow me on{' '}
-            <Link
-              noCustomization
-              externalLink
-              withUnderline
-              href={EXTERNAL_LINKS.GITHUB}
-            >
-              GitHub
-            </Link>
-            .
-          </Typography>
-          <Typography>Finally, some quick bits about me.</Typography>
-          <div className="flex flex-col gap-2 md:flex-row md:gap-6">
-            <ul className="flex list-inside list-disc flex-col gap-2">
-              <Typography component="li">
-                B.E. in Computer Engineering
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                <Icon className="size-4.5" aria-hidden />
+              </span>
+              <Typography variant="body3" className="font-medium">
+                {label}
               </Typography>
-              <Typography component="li">Sr. Software Engineer At Cepheiinfotech</Typography>
-            </ul>
-            <ul className="flex list-inside list-disc flex-col gap-2">
-              <Typography component="li">Avid learner</Typography>
-              <Typography component="li">Aspiring App builder</Typography>
-            </ul>
-          </div>
-          <Typography>
-            One last thing, I&apos;m available for freelance work, so feel free
-            to reach out and say hello! I promise I don&apos;t bite 😉
-          </Typography>
-        </div>
-      </div>
-    </Container>
-  );
-};
+            </li>
+          ))}
+        </ul>
 
-export default AboutMeSection;
+        <Typography variant="body1" className="text-pretty">
+          I am currently open to freelance and contract work. If you have a
+          project in mind, I would be glad to hear about it.
+        </Typography>
+      </Reveal>
+    </div>
+  </Container>
+)
+
+export default AboutMeSection

@@ -1,39 +1,43 @@
-'use client';
+import { MoonStar, Sun } from 'lucide-react'
 
-import { useState, useEffect } from 'react';
-import { MoonStar, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import IconButton from '@/components/general/icon-button'
+import useTheme from '@/hooks/use-theme'
+import { track } from '@/lib/analytics'
+import { mergeClasses } from '@/lib/utils'
 
-import IconButton from '@/components/general/icon-button';
+type ThemeSwitcherProps = {
+  className?: string
+}
 
-const ThemeSwitcher = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // until the UI is mounted, display a dummy icon
-  if (!mounted) {
-    return (
-      <IconButton>
-        <Sun />
-      </IconButton>
-    );
-  }
+const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+  const { resolvedTheme, toggleTheme } = useTheme()
+  const isDark = resolvedTheme === 'dark'
 
   return (
-    <IconButton onClick={toggleTheme}>
-      {theme === 'dark' ? <Sun /> : <MoonStar />}
+    <IconButton
+      onClick={() => {
+        track('theme-toggle', { to: isDark ? 'light' : 'dark' })
+        toggleTheme()
+      }}
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
+      title={`Switch to ${isDark ? 'light' : 'dark'} theme`}
+      className={mergeClasses('overflow-hidden', className)}
+    >
+      {/* Both icons stay mounted so the swap can be animated. */}
+      <Sun
+        className={mergeClasses(
+          'absolute transition-all duration-300',
+          isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0',
+        )}
+      />
+      <MoonStar
+        className={mergeClasses(
+          'absolute transition-all duration-300',
+          isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100',
+        )}
+      />
     </IconButton>
-  );
-};
+  )
+}
 
-export default ThemeSwitcher;
-
-// Ref :: https://www.npmjs.com/package/next-themes#avoid-hydration-mismatch
+export default ThemeSwitcher

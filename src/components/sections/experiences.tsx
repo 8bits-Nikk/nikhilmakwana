@@ -1,26 +1,33 @@
-import { EXPERIENCES } from "@/lib/data";
-import ExperienceDetails from "@/components/data-display/experience-details";
-import Tag from "@/components/data-display/tag";
-import Typography from "@/components/general/typography";
-import Container from "@/components/layout/container";
+import ExperienceItem from '@/components/data-display/experience-item'
+import Reveal from '@/components/general/reveal'
+import Container from '@/components/layout/container'
+import SectionHeading from '@/components/layout/section-heading'
+import { EXPERIENCES } from '@/lib/data'
 
-const ExperienceSection = () => {
-  return (
-    <Container className="bg-gray-50" id="experience">
-      <div className="flex flex-col items-center gap-4">
-        <div className="self-center">
-          <Tag label="Experience" />
-        </div>
-        <Typography variant="subtitle" className="max-w-xl text-center">
-          Here is a quick summary of my most recent experiences:
-        </Typography>
+const ExperienceSection = () => (
+  <Container id="experience" tone="muted">
+    <SectionHeading
+      eyebrow="Experience"
+      title="Professional experience"
+      description="A summary of my most recent roles and the work they involved."
+    />
+
+    <div className="relative mx-auto w-full max-w-4xl">
+      {/* The rail the timeline nodes sit on. */}
+      <span
+        className="absolute inset-y-0 left-2 w-px bg-linear-to-b from-transparent via-line to-transparent md:left-6"
+        aria-hidden
+      />
+
+      <div className="flex flex-col gap-8">
+        {EXPERIENCES.map((experience, index) => (
+          <Reveal key={experience.company} delay={index * 80}>
+            <ExperienceItem {...experience} />
+          </Reveal>
+        ))}
       </div>
+    </div>
+  </Container>
+)
 
-      {EXPERIENCES?.map((experience, index) => (
-        <ExperienceDetails {...experience} key={index} />
-      ))}
-    </Container>
-  );
-};
-
-export default ExperienceSection;
+export default ExperienceSection

@@ -1,30 +1,41 @@
-import * as React from 'react';
+import type { HTMLAttributes, ReactNode } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-import { mergeClasses } from '@/lib/utils';
-import Typography from '@/components/general/typography';
+import { mergeClasses } from '@/lib/utils'
 
-interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
-  label?: string;
-}
+const tagVariants = cva(
+  'inline-flex items-center gap-1.5 rounded-full font-medium whitespace-nowrap',
+  {
+    variants: {
+      variant: {
+        neutral: 'border border-line bg-muted text-gray-600',
+        brand: 'border border-brand/25 bg-brand-soft text-brand',
+        solid: 'bg-gray-900 text-gray-50',
+      },
+      size: {
+        sm: 'px-2.5 py-0.5 text-xs',
+        md: 'px-3.5 py-1 text-sm',
+      },
+    },
+    defaultVariants: {
+      variant: 'neutral',
+      size: 'md',
+    },
+  },
+)
 
-const Tag = React.forwardRef<HTMLDivElement, TagProps>(
-  ({ label, className, ...props }: TagProps, ref) => {
-    return (
-      <div
-        className={mergeClasses(
-          'flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1',
-          className
-        )}
-        {...props}
-      >
-        <Typography variant="body3" className="font-medium">
-          {label}
-        </Typography>
-      </div>
-    );
+type TagProps = HTMLAttributes<HTMLSpanElement> &
+  VariantProps<typeof tagVariants> & {
+    label?: ReactNode
   }
-);
 
-Tag.displayName = 'Tag';
+const Tag = ({ label, className, variant, size, children, ...props }: TagProps) => (
+  <span
+    className={mergeClasses(tagVariants({ variant, size }), className)}
+    {...props}
+  >
+    {label ?? children}
+  </span>
+)
 
-export default Tag;
+export default Tag

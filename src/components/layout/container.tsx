@@ -1,28 +1,31 @@
-import * as React from 'react';
+import type { HTMLAttributes, Ref } from 'react'
 
-import { mergeClasses } from '@/lib/utils';
+import { mergeClasses } from '@/lib/utils'
 
-interface ContainerProps extends React.HTMLAttributes<HTMLElement> {}
+type ContainerProps = HTMLAttributes<HTMLElement> & {
+  /** `muted` tints the section so alternating sections separate visually. */
+  tone?: 'canvas' | 'muted'
+  ref?: Ref<HTMLElement>
+}
 
-const Container = React.forwardRef<HTMLElement, ContainerProps>(
-  ({ className, children, ...props }: ContainerProps, ref) => {
-    return (
-      <section
-        className={mergeClasses(
-          'w-full bg-gray py-16 md:py-20 2xl:py-24',
-          className
-        )}
-        ref={ref}
-        {...props}
-      >
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
-          {children}
-        </div>
-      </section>
-    );
-  }
-);
+const Container = ({
+  className,
+  children,
+  tone = 'canvas',
+  ...props
+}: ContainerProps) => (
+  <section
+    className={mergeClasses(
+      'relative w-full py-20 md:py-24 2xl:py-28',
+      tone === 'muted' ? 'bg-muted' : 'bg-canvas',
+      className,
+    )}
+    {...props}
+  >
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 md:gap-16 md:px-8">
+      {children}
+    </div>
+  </section>
+)
 
-Container.displayName = 'Container';
-
-export default Container;
+export default Container

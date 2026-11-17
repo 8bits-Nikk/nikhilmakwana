@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Nikhil Makwana | Senior Software Engineer</title>
+    <meta
+      name="description"
+      content="Senior Software Engineer based in Ahmedabad, India, specializing in full-stack mobile development with React Native, Java Spring Boot and Node.js."
+    />
+    <meta
+      name="keywords"
+      content="React Native Developer, Mobile App Developer, Java Developer, Spring Boot Developer, Full Stack Developer, Software Engineer, Ahmedabad"
+    />
+    <meta name="author" content="Nikhil Makwana" />
+    <meta name="creator" content="Nikhil Makwana" />
+    <link rel="canonical" href="https://nikhilmakwana.in" />
+
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nikhilmakwana.in" />
+    <meta property="og:site_name" content="Nikhil Makwana | Senior Software Engineer" />
+    <meta property="og:title" content="Nikhil Makwana | Senior Software Engineer" />
+    <meta
+      property="og:description"
+      content="Senior Software Engineer based in Ahmedabad, India, specializing in full-stack mobile development with React Native, Java Spring Boot and Node.js."
+    />
+    <meta property="og:image" content="https://nikhilmakwana.in/images/open-graph-nikhil-2026.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nikhil Makwana | Senior Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Senior Software Engineer based in Ahmedabad, India, specializing in full-stack mobile development with React Native, Java Spring Boot and Node.js."
+    />
+    <meta name="twitter:image" content="https://nikhilmakwana.in/images/open-graph-nikhil-2026.jpg" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <script>
+      // Applies the stored (or system) theme before first paint so the page
+      // never flashes the wrong colours. Mirrors THEME_STORAGE_KEY in
+      // src/lib/theme-context.ts.
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var isDark =
+            stored === 'dark' ||
+            (stored !== 'light' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.classList.toggle('dark', isDark)
+          document.documentElement.style.colorScheme = isDark ? 'dark' : 'light'
+        } catch (e) {
+          /* localStorage unavailable — fall back to the light theme */
+        }
+      })()
+    </script>
+    <!-- Self-hosted Umami analytics (no cookies). data-domains keeps dev/preview traffic out. -->
+    <script
+      defer
+      src="https://analytics.nikhilmakwana.in/script.js"
+      data-website-id="9804dbad-9c05-4e0a-ae2d-9d92f5eb8df7"
+      data-domains="nikhilmakwana.in,www.nikhilmakwana.in"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
